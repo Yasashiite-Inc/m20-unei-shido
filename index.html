@@ -1,0 +1,867 @@
+<!DOCTYPE html><html><head><base target="_top"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>運営指導対策（品質管理・コンプラ）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;background:#f5f7fa;color:#333;font-size:13px;line-height:1.6}
+.hd{background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.hd h1{font-size:16px}
+.role{display:flex;gap:6px;align-items:center;font-size:11px;flex-wrap:wrap}.role select{font-size:11px;padding:3px 6px;border-radius:4px;border:none}
+.src{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700}.src-live{background:#c8e6c9;color:#1b5e20}.src-demo{background:#ffe0b2;color:#e65100}
+.nav{background:#fff;border-bottom:2px solid #e0e0e0;display:flex;padding:0 8px;overflow-x:auto;flex-wrap:nowrap;position:sticky;top:0;z-index:5}
+.tab{padding:9px 11px;font-size:11px;cursor:pointer;border-bottom:3px solid transparent;color:#666;white-space:nowrap}.tab.on{color:#1b5e20;border-bottom-color:#2e7d32;font-weight:700;background:#f1f8e9}
+.mn{padding:14px;max-width:1200px;margin:0 auto}.s{display:none}.s.on{display:block}
+.cd{background:#fff;border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:12px;overflow-x:auto}
+.ct{font-size:13px;font-weight:700;margin-bottom:8px;color:#1b5e20;border-left:3px solid #2e7d32;padding-left:8px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+h2.pt{font-size:14px;color:#1b5e20;margin-bottom:8px}
+table{width:100%;font-size:11px;border-collapse:collapse}th{padding:5px 6px;text-align:left;background:#f5f5f5;font-weight:600;white-space:nowrap}td{padding:5px 6px;vertical-align:top}tr{border-bottom:1px solid #eee}
+tr.click{cursor:pointer}tr.click:hover{background:#f1f8e9}
+.ok{color:#2e7d32;font-weight:700}.warn{color:#e65100;font-weight:700}.ng{color:#c62828;font-weight:700}.mut{color:#888;font-size:10px}
+.btn{background:#1b5e20;color:#fff;border:none;padding:6px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer}.btn:disabled{opacity:.5}
+.btn.sub{background:#fff;color:#1b5e20;border:1px solid #1b5e20}
+.sg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
+.si{background:#fff;border-radius:8px;padding:12px 6px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);cursor:pointer}
+.si .lb{font-size:10px;color:#666}.si .vl{font-size:20px;font-weight:700}.si .sub{font-size:10px;margin-top:2px}
+.ch{display:flex;gap:8px;margin-bottom:12px;padding:10px;background:#e8f5e9;border-radius:8px;border:1px solid #c8e6c9;font-size:12px}
+.chi{font-size:26px}.sv{display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:600;margin:1px}
+.sv-k{background:#e3f2fd;color:#1565c0}.sv-s{background:#f3e5f5;color:#6a1b9a}.sv-i{background:#fff3e0;color:#e65100}.sv-g{background:#e0f2f1;color:#00695c}
+.lv{display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:700}.lv-h{background:#ffebee;color:#c62828}.lv-m{background:#fff3e0;color:#e65100}.lv-l{background:#e8f5e9;color:#2e7d32}
+.al{display:flex;gap:8px;padding:8px 10px;border-radius:6px;margin-bottom:6px;font-size:12px;align-items:flex-start}.al-h{background:#ffebee}.al-m{background:#fff8e1}.al-l{background:#f1f8e9}
+.al .act{font-size:11px;color:#555;margin-top:2px}
+.fm{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px 12px;margin-bottom:10px}
+.fm label{font-size:10px;color:#666;display:block;margin-bottom:2px}.fm input,.fm select,.fm textarea{width:100%;padding:5px 7px;border:1px solid #ccc;border-radius:4px;font-size:12px;font-family:inherit}
+.fm .wide{grid-column:1/-1}
+.bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;min-width:60px}.bar i{display:block;height:100%;background:#2e7d32}
+.flow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}.flow div{flex:1;min-width:92px;background:#e8f5e9;border:1px solid #c8e6c9;border-radius:6px;padding:6px;font-size:11px;text-align:center}
+.flow div b{display:block;color:#1b5e20}.flow .x{background:#ffebee;border-color:#ffcdd2}.flow .x b{color:#c62828}
+.crumb{font-size:11px;margin-bottom:8px}.crumb a{color:#1565c0;cursor:pointer;text-decoration:underline}
+.seg{display:inline-flex;border:1px solid #c8e6c9;border-radius:5px;overflow:hidden}.seg button{border:none;background:#fff;padding:3px 8px;font-size:11px;cursor:pointer}.seg button.on{background:#2e7d32;color:#fff}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#263238;color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;display:none;z-index:20;max-width:90%}
+.note{font-size:10px;color:#666;margin-top:6px}
+.prev{max-width:240px;max-height:240px;border:1px solid #ddd;border-radius:6px;margin-top:6px}
+pre.doc{white-space:pre-wrap;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:10px;font-size:11px;font-family:inherit}
+@media(max-width:760px){.sg{grid-template-columns:repeat(2,1fr)}.mn{padding:10px}.hd h1{font-size:14px}}
+</style></head><body>
+<div class="hd">
+  <h1>運営指導対策 <span style="font-weight:400;font-size:12px">（品質管理・コンプラ）</span> <span style="background:#ff6f00;padding:2px 8px;border-radius:8px;font-size:10px;margin-left:6px">M20</span></h1>
+  <div class="role">
+    <span>表示：</span>
+    <select id="roleSel" onchange="onRole()">
+      <option value="exec">経営層（全事業所）</option>
+      <option value="officer">管掌役員</option>
+      <option value="area">エリア長</option>
+      <option value="office">事業所（管理者・サ責）</option>
+    </select>
+    <select id="roleVal" onchange="onRoleVal()" style="display:none"></select>
+    <span id="srcBadge" class="src src-demo">読込中</span>
+    <span id="hdDate" style="font-size:11px"></span>
+  </div>
+</div>
+<div class="nav" id="nav">
+<div class="tab on" onclick="go(0)">🏠ホーム</div>
+<div class="tab" onclick="go(1)">⚙️基本情報</div>
+<div class="tab" onclick="go(2)">⭐NPS</div>
+<div class="tab" onclick="go(3)">🏢加算管理</div>
+<div class="tab" onclick="go(4)">👥人員・人事</div>
+<div class="tab" onclick="go(5)">📋統合リスク</div>
+<div class="tab" onclick="go(6)">⚖️労基</div>
+<div class="tab" onclick="go(7)">🔬インシデント</div>
+<div class="tab" onclick="go(8)">🔍運営指導対策</div>
+<div class="tab" onclick="go(9)">📰法令・相談</div>
+<div class="tab" onclick="go(10)">🤖AI予測</div>
+<div class="tab" onclick="go(11)">📝届出</div>
+<div class="tab" onclick="go(12)">💴料金表</div>
+<div class="tab" onclick="go(13)">🏥健診取込</div>
+</div>
+<div class="mn">
+
+<!-- 0 ホーム（ロール別ダッシュボード） -->
+<div class="s on" id="p0">
+<h2 class="pt" id="homeTitle">🏠 ダッシュボード</h2>
+<div class="ch"><div class="chi">🦉</div><div id="owl">読み込み中です…</div></div>
+<div class="sg" id="homeKpi"></div>
+<div class="cd"><div class="ct">🚨 AIアラート（返還・指摘リスクの高い順）<button class="btn sub" onclick="go(10)">すべて見る</button></div><div id="homeAlerts"></div></div>
+<div class="cd"><div class="ct">🏢 事業所別 運営指導リスク</div><div id="homeOffices"></div>
+<div class="note">リスク点数 = 指定更新の近さ + 書類未取得 + 加算要件の未充足 + 未完了の指摘 + 直近90日の重大インシデント。50点以上を「高」、25点以上を「中」としています。</div></div>
+</div>
+
+<!-- 1 基本情報（豊田さん要望：事業所番号・開設日・更新日アラート） -->
+<div class="s" id="p1">
+<h2 class="pt">⚙️ 事業所基本情報・指定更新</h2>
+<div class="cd"><div class="ct">🔔 指定更新アラート <span class="mut">行政から更新のお知らせが来ない場合に備え、180日前から表示</span></div><div id="renewAlerts"></div></div>
+<div class="cd"><div class="ct">🏢 事業所一覧（サービス種別ごと）</div><div id="officeTable"></div></div>
+<div class="cd"><div class="ct">✏️ 事業所情報の追加・更新 <span class="mut">事業所名＋サービス種別が同じ行は上書き</span></div>
+<div class="fm" id="officeForm">
+<div><label>事業所名</label><input name="事業所名"></div>
+<div><label>サービス種別</label><select name="サービス種別"></select></div>
+<div><label>事業所番号（10桁）</label><input name="事業所番号" maxlength="10"></div>
+<div><label>開設日</label><input type="date" name="開設日"></div>
+<div><label>指定更新日（有効期間満了日）</label><input type="date" name="指定更新日"></div>
+<div><label>指導権者</label><input name="指導権者" placeholder="例：栃木県"></div>
+<div><label>エリア</label><input name="エリア"></div>
+<div><label>管掌役員</label><input name="管掌役員"></div>
+<div><label>利用者数</label><input type="number" name="利用者数"></div>
+<div><label>特定事業所加算</label><select name="特定事業所加算"><option>なし</option><option>特定Ⅰ</option><option>特定Ⅱ</option><option>特定Ⅲ</option><option>特定Ⅳ</option><option>特定Ⅴ</option></select></div>
+<div><label>処遇改善加算</label><select name="処遇改善加算"><option>なし</option><option>処遇Ⅰ</option><option>処遇Ⅱ</option><option>処遇Ⅲ</option><option>処遇Ⅳ</option></select></div>
+<div><label>地域区分</label><select name="地域区分"></select></div>
+</div>
+<button class="btn" onclick="submitOffice()">保存</button></div>
+</div>
+
+<!-- 2 NPS -->
+<div class="s" id="p2"><div class="cd"><div class="ct">⭐ NPS・品質 <span class="src src-demo">サンプル</span></div><table><tr><th>指標</th><th>実績</th><th>判定</th></tr>
+<tr><td>利用者NPS</td><td>+32</td><td class="ok">✅</td></tr>
+<tr><td>ケアマネNPS</td><td>+45</td><td class="ok">✅</td></tr>
+<tr><td>時間遵守率</td><td>97.2%</td><td class="ok">✅</td></tr>
+<tr><td>苦情</td><td>1件</td><td class="ok">✅</td></tr></table>
+<div class="note">NPS は満足度調査の仕組みと連携後に実データへ切り替えます（現在は見本の数値です）。</div></div></div>
+
+<!-- 3 加算管理（スプシ連動） -->
+<div class="s" id="p3">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap">
+<h2 class="pt" style="margin:0">🏢 特定事業所加算 要件管理</h2>
+<div><select id="kasanOffice" onchange="renderKasan()" style="font-size:11px;padding:4px"></select> <button class="btn" onclick="reload()">🔄 スプレッドシートから最新取得</button></div></div>
+<div class="ch"><div class="chi">🦉</div><div><span id="msg">スプレッドシート「研修管理」シートと連動。研修・会議・健診をリアルタイム判定します。</span></div></div>
+<div class="sg" id="sum" style="grid-template-columns:repeat(4,1fr)"></div>
+<div class="cd"><div class="ct">📊 事業所別 充足率（管掌役員・エリア長向け一覧）</div><div id="kasanAll"></div></div>
+<div class="cd"><div class="ct">📋 特定事業所加算(Ⅰ) 要件 充足状況</div>
+<table id="req14"><tr><th>#</th><th>要件</th><th>Ⅰ</th><th>Ⅱ</th><th>充足</th><th>ソース</th></tr>
+<tr><td>1</td><td><strong>研修計画に基づく研修の実施</strong></td><td>〇</td><td>〇</td><td id="r1">📡</td><td>スプシ(F/G列)</td></tr>
+<tr><td>2</td><td><strong>留意事項伝達の会議の定期開催(月1回)</strong></td><td>〇</td><td>〇</td><td id="r2">📡</td><td>スプシ(E列)</td></tr>
+<tr><td>3</td><td>利用者情報の文書等による伝達・報告</td><td>〇</td><td>〇</td><td class="mut">介護ソフトで確認</td><td>介護ソフト</td></tr>
+<tr><td>4</td><td><strong>健康診断等の定期実施(年1回)</strong></td><td>〇</td><td>〇</td><td id="r4">📡</td><td>スプシ(H列)</td></tr>
+<tr><td>5</td><td>緊急時対応方法の明示</td><td>〇</td><td>〇</td><td class="mut">重説で確認</td><td>文書管理</td></tr>
+<tr><td>6</td><td>24h連絡体制・看取り方針</td><td>〇*</td><td>〇*</td><td class="mut">体制表で確認</td><td>体制表</td></tr>
+<tr><td>9</td><td>介護福祉士30%以上</td><td>〇</td><td>-</td><td id="r9">-</td><td>人事登録</td></tr>
+<tr><td>10</td><td>全サ責が3年以上介福</td><td>〇</td><td>-</td><td class="mut">経歴書で確認</td><td>経歴書</td></tr>
+<tr><td>13</td><td>重度者(要介護4以上等)20%以上</td><td>〇*</td><td>-</td><td class="mut">利用者一覧で確認</td><td>利用者一覧</td></tr>
+<tr><td>14</td><td>看取り期対応実績1人以上</td><td>〇*</td><td>-</td><td class="mut">記録で確認</td><td>記録</td></tr></table>
+<div class="note">太字=スプレッドシート連動項目　*=13 or (6+14)で可　灰色=他系統の結果を見て確認する項目（自動判定は未連携）</div></div>
+<div class="cd"><div class="ct">👥 訪問介護員 個別ステータス（研修管理シート連動）<label style="font-size:11px;font-weight:400"><input type="checkbox" id="onlyNg" onchange="renderKasan()"> 未実施のみ</label></div><div id="helpers">📡 取得中...</div></div>
+</div>
+
+<!-- 4 人員・人事（人事情報の自前登録 → 人員配置・加算・届出へ反映） -->
+<div class="s" id="p4">
+<h2 class="pt">👥 人員配置・人事登録</h2>
+<div class="cd"><div class="ct">📐 人員配置の判定（人事登録から自動集計）</div><div id="staffJudge"></div>
+<div class="note">サ責の必要数は「利用者40人またはその端数ごとに1人」で判定しています（常勤サ責3人以上かつ業務に主として従事する場合等の緩和は未反映）。</div></div>
+<div class="cd"><div class="ct">➕ 人事情報の登録 <span class="mut">サ責・管理者の変更は届出タブに自動で載ります</span></div>
+<div class="fm" id="staffForm">
+<div><label>事業所名</label><select name="事業所名" class="officeSel"></select></div>
+<div><label>氏名</label><input name="氏名"></div>
+<div><label>職種</label><select name="職種"><option>訪問介護員</option><option>サービス提供責任者</option><option>管理者</option><option>事務員</option></select></div>
+<div><label>資格</label><select name="資格"><option>介護福祉士</option><option>実務者研修</option><option>初任者研修</option><option>その他</option></select></div>
+<div><label>常勤区分</label><select name="常勤区分"><option>常勤</option><option>非常勤</option></select></div>
+<div><label>サ責</label><select name="サ責"><option>-</option><option>○</option></select></div>
+<div><label>週勤務時間</label><input type="number" name="週勤務時間" value="40"></div>
+<div><label>異動区分</label><select name="異動区分"><option>新規採用</option><option>配置換え</option><option>退職</option><option>産休・育休</option><option>サ責就任</option><option>サ責退任</option></select></div>
+</div>
+<button class="btn" onclick="submitStaff()">登録</button></div>
+<div class="cd"><div class="ct">📄 人事登録の履歴</div><div id="staffTable"></div></div>
+</div>
+
+<!-- 5 統合リスク管理（計画書・重説・契約書の未取得検知） -->
+<div class="s" id="p5">
+<h2 class="pt">📋 統合リスク管理（書類の未取得検知）</h2>
+<div class="sg" id="docKpi" style="grid-template-columns:repeat(4,1fr)"></div>
+<div class="cd"><div class="ct">⚠️ 未取得・不備のある利用者 <span class="mut">返還リスク推計 = 月額単位数 × 地域単価（1か月あたり）</span></div><div id="docTable"></div>
+<div class="note">個別援助計画書がない期間の報酬は過誤調整（返還）の対象になり得ます。重説・契約書の未取得は運営基準違反として指摘対象です。返還額は自治体の判断によるため、ここでの金額は目安です。<br>連携元：計画書・契約管理の各アプリ（現在は「書類管理」シートを参照）。</div></div>
+</div>
+
+<!-- 6 労基 -->
+<div class="s" id="p6"><div class="cd"><div class="ct">⚖️ 労基法 <span class="src src-demo">サンプル</span></div><table><tr><th>項目</th><th>基準</th><th>実績</th><th></th></tr>
+<tr style="background:#ffebee"><td><strong>月時間外</strong></td><td>45h</td><td class="ng">最大52h</td><td class="ng">❌</td></tr>
+<tr><td>年間</td><td>360h</td><td>198h</td><td class="ok">✅</td></tr></table>
+<div class="note">36協定・時間外の判定は勤怠・残業管理の系統で行い、ここではその結果を表示する方針です（二重判定を避けるため）。</div></div></div>
+
+<!-- 7 インシデント（ドリルダウン） -->
+<div class="s" id="p7">
+<h2 class="pt">🔬 インシデント一覧（ドリルダウン）</h2>
+<div class="cd"><div class="crumb" id="incCrumb"></div><div id="incBody"></div></div>
+</div>
+
+<!-- 8 運営指導対策 -->
+<div class="s" id="p8">
+<h2 class="pt">🔍 運営指導対策</h2>
+<div class="cd"><div class="ct">🧭 運営指導の流れ</div>
+<div class="flow"><div><b>①通知</b>原則1か月前</div><div><b>②事前提出資料</b>自己点検</div><div><b>③当日</b>書類・聞き取り</div><div><b>④講評</b></div><div><b>⑤文書指摘</b></div><div><b>⑥改善報告</b>期限内に提出</div><div><b>⑦経過確認</b></div><div class="x"><b>監査へ移行</b>重大な疑い時</div></div>
+<div class="note">2022年3月の通知で「実地指導」は「運営指導」に改称。介護保険サービスは指定の有効期間内に1回以上（居住系・施設系は3年に1回以上が望ましい）。住宅型有料老人ホーム・サ高住は根拠法が別のため対象外としています。</div></div>
+<div class="cd"><div class="ct">📅 次回の運営指導の見込み</div><div id="nextInsp"></div></div>
+<div class="cd"><div class="ct">🤖 指摘傾向の分析と留意点 <span class="mut">過去の指摘を区分ごとに集計</span></div><div id="trend"></div></div>
+<div class="cd"><div class="ct">✅ 確認項目チェックリスト（運営指導マニュアルの確認項目をもとに再構成）
+<span><select id="chkOffice" onchange="renderChecklist()" style="font-size:11px;padding:3px"></select> <button class="btn" onclick="saveChk()">保存</button></span></div>
+<div id="chkBody"></div>
+<div class="note">厚生労働省「介護保険施設等運営指導マニュアル」別添の確認項目・確認文書を、サービス種別ごとに要約したものです。原文との突合・最新改定の反映は要確認です。</div></div>
+<div class="cd"><div class="ct">🗂️ 運営指導の履歴（指摘・通知・改善報告）</div><div id="inspTable"></div></div>
+<div class="cd"><div class="ct">➕ 履歴の追加</div>
+<div class="fm" id="inspForm">
+<div><label>事業所名</label><select name="事業所名" class="officeSel"></select></div>
+<div><label>実施日</label><input type="date" name="実施日"></div>
+<div><label>区分</label><select name="区分"><option>運営指導</option><option>集団指導</option><option>監査</option><option>指定更新</option></select></div>
+<div><label>指導権者</label><input name="指導権者"></div>
+<div><label>指摘区分</label><select name="指摘区分" id="inspCat"></select></div>
+<div><label>改善報告期限</label><input type="date" name="改善報告期限"></div>
+<div class="wide"><label>指摘内容</label><textarea name="指摘内容" rows="2"></textarea></div>
+</div>
+<button class="btn" onclick="submitInsp()">追加</button></div>
+</div>
+
+<!-- 9 法令・相談 -->
+<div class="s" id="p9">
+<h2 class="pt">📰 法令情報・弁護士カジュアル相談</h2>
+<div class="cd"><div class="ct">📰 法令・通知 <span class="src src-demo">サンプル</span></div>
+<table><tr><th>日付</th><th>件名</th><th>影響</th></tr>
+<tr><td>2024-04</td><td>介護報酬改定（処遇改善加算の一本化、身体的拘束等の適正化の訪問系への拡大 等）</td><td class="warn">要対応</td></tr>
+<tr><td>2025-04</td><td>重要事項等のウェブサイト掲載の義務化</td><td class="warn">要対応</td></tr>
+<tr><td>2022-03</td><td>「実地指導」→「運営指導」へ改称（指導指針の改正）</td><td class="ok">反映済</td></tr></table>
+<div class="note">法令情報の自動取込は未連携です。</div></div>
+<div class="cd"><div class="ct">⚖️ 弁護士カジュアル相談（受付）</div>
+<div class="fm" id="legalForm">
+<div><label>事業所名</label><select name="事業所名" class="officeSel"></select></div>
+<div><label>相談者</label><input name="相談者"></div>
+<div><label>カテゴリ</label><select name="カテゴリ"><option>利用者・家族とのトラブル</option><option>契約・重説</option><option>労務</option><option>ハラスメント</option><option>運営指導・監査</option><option>個人情報</option><option>その他</option></select></div>
+<div><label>緊急度</label><select name="緊急度"><option>通常</option><option>急ぎ（1週間以内）</option><option>至急（当日）</option></select></div>
+<div class="wide"><label>相談内容（個人が特定できる情報は書かないでください）</label><textarea name="相談内容" rows="3"></textarea></div>
+</div>
+<button class="btn" onclick="submitLegal()">相談を送る</button>
+<div class="note">受付内容は「法務相談」シートに記録し、通知先（スクリプトプロパティ LEGAL_MAIL）が設定されていればメールで知らせます。</div></div>
+<div class="cd"><div class="ct">📄 相談履歴</div><div id="legalTable"></div></div>
+</div>
+
+<!-- 10 AI予測 -->
+<div class="s" id="p10">
+<h2 class="pt">🤖 AI予測・アラート一覧</h2>
+<div class="cd"><div class="ct">🚨 アラート全件</div><div id="allAlerts"></div>
+<div class="note">現在はルールに基づく判定です（生成AIによる文章解析は、要配慮個人情報の扱いが決まるまで未接続）。</div></div>
+<div class="cd"><div class="ct">📉 加算喪失リスク（事業所別）</div><div id="lossRisk"></div></div>
+</div>
+
+<!-- 11 届出 -->
+<div class="s" id="p11">
+<h2 class="pt">📝 届出管理</h2>
+<div class="cd"><div class="ct">🔔 届出が必要な変更（人事登録から自動）</div><div id="notifTable"></div>
+<div class="note">変更届は、変更があった日から10日以内の提出が原則です（指導権者の要綱で要確認）。</div></div>
+<div class="cd"><div class="ct">📄 変更届 下書き</div><div id="notifDraft" class="mut">上の表の「下書き」を押すと表示します。</div></div>
+</div>
+
+<!-- 12 料金表 -->
+<div class="s" id="p12">
+<h2 class="pt">💴 料金表の自動生成（訪問介護）</h2>
+<div class="cd"><div class="fm">
+<div><label>事業所（設定を読み込む）</label><select id="feeOffice" onchange="feeFromOffice()" class="officeSel"></select></div>
+<div><label>地域区分</label><select id="feeArea" onchange="renderFee()"></select></div>
+<div><label>特定事業所加算</label><select id="feeTok" onchange="renderFee()"></select></div>
+<div><label>処遇改善加算</label><select id="feeSho" onchange="renderFee()"></select></div>
+</div>
+<div id="feeTable"></div>
+<div class="note">計算：加算後単位数 × 地域単価 = 費用額（1円未満切捨て）、保険給付 = 費用額 × 0.9（切捨て）、利用者負担 = 費用額 − 保険給付。2割・3割負担も同様。単位数・単価は2024年度改定の値で、最新告示との突合は要確認です。処遇改善加算は本来、月の合計単位数に掛けて計算するため、1回あたりの金額は目安です。</div>
+<button class="btn sub" onclick="printFee()" style="margin-top:8px">🖨️ 印刷</button></div>
+</div>
+
+<!-- 13 健診取込 -->
+<div class="s" id="p13">
+<h2 class="pt">🏥 健康診断結果の取込（スマホ撮影 → OCR → 自動格納）</h2>
+<div class="cd"><div class="fm">
+<div><label>介護員</label><select id="hcHelper"></select></div>
+<div class="wide"><label>健診結果の写真（スマホならカメラが起動します）</label><input type="file" id="hcFile" accept="image/*" capture="environment" onchange="hcPreview()"></div>
+</div>
+<img id="hcImg" class="prev" style="display:none">
+<div style="margin-top:8px"><button class="btn" id="hcUp" onclick="hcUpload()">📤 アップロードして読み取る</button></div>
+<div id="hcResult" style="margin-top:10px"></div>
+<div class="note">写真は Google ドライブの専用フォルダに保存し、受診日を確認してから「研修管理」シートの健康診断列に書き込みます。健診結果は要配慮個人情報です。受診日以外（検査値など）はシートに転記しません。</div></div>
+</div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================== 定数 =====================
+var LIVE = typeof google !== 'undefined' && google.script && google.script.run;
+var TODAY = new Date(); TODAY.setHours(0,0,0,0);
+var SERVICES = ['訪問介護','居宅介護支援','通所介護','訪問看護','居宅介護（障害）','重度訪問介護（障害）','福祉用具貸与','その他'];
+var AREAS = {'1級地':11.40,'2級地':11.12,'3級地':11.05,'4級地':10.84,'5級地':10.70,'6級地':10.42,'7級地':10.21,'その他':10.00};
+var TOKUTEI = {'なし':0,'特定Ⅰ':0.20,'特定Ⅱ':0.10,'特定Ⅲ':0.10,'特定Ⅳ':0.03,'特定Ⅴ':0.03};
+var SHOGU = {'なし':0,'処遇Ⅰ':0.245,'処遇Ⅱ':0.224,'処遇Ⅲ':0.182,'処遇Ⅳ':0.145};
+var FEE_CODES = [
+  ['身体介護（20分未満）',163],['身体介護1（20分以上30分未満）',244],['身体介護2（30分以上1時間未満）',387],
+  ['身体介護3（1時間以上1時間30分未満）',567],['生活援助2（20分以上45分未満）',179],['生活援助3（45分以上）',220],
+  ['身体1＋生活1（20分）',309],['通院等乗降介助（片道）',97]];
+var INSP_CATS = ['計画','記録','重説・契約','人員・勤務体制','加算','研修・委員会','苦情・事故','掲示・規程','その他'];
+var ADVICE = {
+  '計画':'計画の作成→説明→同意→交付の日付順を確認。サービス開始日より前に同意日があるか、見直しの時期が守られているか。',
+  '記録':'サービス提供記録と計画・実績（請求）の時間・内容が一致しているか。2人訪問・初回加算などの根拠記録。',
+  '重説・契約':'運営規程と重要事項説明書の内容（営業日・料金・苦情窓口）の一致、署名・交付日の有無。',
+  '人員・勤務体制':'勤務表を月ごとに作成しているか。常勤換算2.5、サ責の配置数、兼務の記録。',
+  '加算':'加算の要件を毎月確認した記録（研修計画・会議録・健診・有資格者割合）が残っているか。',
+  '研修・委員会':'虐待防止・感染症・BCP・身体的拘束等の委員会、指針、研修・訓練（年1回以上等）の記録。',
+  '苦情・事故':'苦情・事故の受付から対応・再発防止までの記録と、市町村への報告の要否判断。',
+  '掲示・規程':'重要事項の掲示とウェブサイト掲載、運営規程の改定と届出。',
+  'その他':'過去の指摘事項が改善されたままになっているかを、改善報告書と照らして確認。'
+};
+var CHECK = {
+  '共通':[
+    ['人員','管理者が常勤で配置され、兼務の範囲が記録されている'],
+    ['運営','運営規程と重要事項説明書の内容が一致している'],
+    ['運営','重要事項を事業所に掲示し、ウェブサイトにも掲載している'],
+    ['運営','勤務体制（勤務表）を月ごとに作成している'],
+    ['運営','業務継続計画（BCP）を策定し、研修・訓練を実施している'],
+    ['運営','感染症対策の委員会開催・指針・研修・訓練を実施している'],
+    ['運営','虐待防止の委員会開催・指針・研修・担当者を定めている'],
+    ['運営','身体的拘束等の適正化（やむを得ず行う場合の記録）を整えている'],
+    ['運営','ハラスメント対策の方針を明確化し、周知している'],
+    ['運営','苦情の受付・対応を記録している'],
+    ['運営','事故発生時の対応と記録、市町村への報告を行っている'],
+    ['運営','従業者の秘密保持（誓約）と個人情報利用の同意を取得している']],
+  '訪問介護':[
+    ['人員','訪問介護員等が常勤換算2.5以上'],
+    ['人員','サービス提供責任者を利用者40人ごとに1人以上配置'],
+    ['運営','重要事項を説明し、文書で同意を得てからサービスを開始している'],
+    ['運営','訪問介護計画を作成し、説明・同意・交付している'],
+    ['運営','居宅サービス計画（ケアプラン）に沿った計画になっている'],
+    ['運営','サービス提供の記録（日時・内容・心身の状況）を残している'],
+    ['運営','訪問介護員の清潔の保持・健康状態の管理をしている'],
+    ['報酬','2人訪問・初回加算・緊急時訪問介護加算の要件を満たした記録がある'],
+    ['報酬','特定事業所加算の要件（研修計画・会議・文書伝達・健診）を満たしている'],
+    ['報酬','処遇改善加算の要件（キャリアパス・計画書・実績報告）を満たしている'],
+    ['報酬','同一建物減算の対象を正しく判定している']],
+  '居宅介護支援':[
+    ['人員','介護支援専門員を利用者44人（条件により49人）ごとに1人以上配置'],
+    ['運営','複数の事業所の紹介を求められることの説明をしている'],
+    ['運営','アセスメント・担当者会議・モニタリング（月1回訪問）の記録がある'],
+    ['運営','ケアプランを利用者に交付し、サービス事業者にも交付している'],
+    ['報酬','運営基準減算・特定事業所集中減算の該当を確認している']],
+  '通所介護':[
+    ['人員','生活相談員・看護職員・介護職員・機能訓練指導員の配置が基準を満たす'],
+    ['運営','通所介護計画を作成し、説明・同意・交付している'],
+    ['運営','定員を守っている（定員超過減算の確認）'],
+    ['運営','非常災害対策（計画・訓練）を行っている'],
+    ['報酬','個別機能訓練加算・入浴介助加算などの要件記録がある']]
+};
+
+// ===================== 状態 =====================
+var D = null;            // 全データ
+var role = {type:'exec', value:''};
+var incPath = [];        // インシデントのドリルダウン位置
+var chkState = {};       // チェックリスト（事業所 → 項目 → 状態）
+var hc = {file:null, result:null};
+
+// ===================== 共通関数 =====================
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function $(id){return document.getElementById(id);}
+function pd(s){if(!s)return null;if(s instanceof Date)return s;var m=String(s).match(/(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/);if(!m)return null;return new Date(+m[1],+m[2]-1,+m[3]);}
+function ymd(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function days(s){var d=pd(s);return d?Math.round((d-TODAY)/86400000):null;}
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(function(){t.style.display='none';},3500);}
+function lvTag(l){return '<span class="lv lv-'+(l==='高'?'h':l==='中'?'m':'l')+'">'+l+'</span>';}
+function svTag(s){var c=/障害|居宅介護（/.test(s)?'sv-s':s==='訪問介護'?'sv-k':s==='居宅介護支援'?'sv-g':'sv-i';return '<span class="sv '+c+'">'+esc(s)+'</span>';}
+function formVals(id){var o={};document.querySelectorAll('#'+id+' [name]').forEach(function(el){o[el.name]=el.value.trim();});return o;}
+function clearForm(id){document.querySelectorAll('#'+id+' input,#'+id+' textarea').forEach(function(el){if(el.type!=='number')el.value='';});}
+function call(fn,args,ok,ng){
+  if(!LIVE){ok&&ok(null);return;}
+  var r=google.script.run.withSuccessHandler(ok||function(){}).withFailureHandler(function(e){toast('エラー: '+e.message);ng&&ng(e);});
+  r[fn].apply(r,args||[]);
+}
+
+// ===================== 読み込み =====================
+function reload(){
+  $('srcBadge').textContent='読込中';
+  if(LIVE){
+    google.script.run.withSuccessHandler(function(d){init(mergeSample(d));}).withFailureHandler(function(e){toast('取得に失敗: '+e.message+'（サンプル表示）');init(demoData());}).getAppData();
+  } else init(demoData());
+}
+// シートが未作成の項目だけサンプルで補う
+function mergeSample(d){
+  var s=demoData();d.sources=d.sources||{};
+  ['offices','inspections','documents','incidents','staff','legal'].forEach(function(k){if(!d[k]){d[k]=s[k];d.sources[k]='sample';}});
+  if(!d.kasan||d.kasan.error){d.kasan=s.kasan;d.helpers=s.helpers;d.sources.kasan='sample';}
+  d.checklists=d.checklists||{};
+  return d;
+}
+function init(d){
+  D=d;chkState=d.checklists||{};
+  if(!LIVE){try{chkState=JSON.parse(localStorage.getItem('m20_chk')||'{}');}catch(e){}}
+  var live=Object.keys(D.sources).filter(function(k){return D.sources[k]==='sheet';}).length;
+  var all=Object.keys(D.sources).length;
+  $('srcBadge').className='src '+(live===all?'src-live':'src-demo');
+  $('srcBadge').textContent=LIVE?(live===all?'スプシ連動':'一部サンプル（'+live+'/'+all+'連動）'):'デモ表示';
+  $('srcBadge').title=Object.keys(D.sources).map(function(k){return k+': '+(D.sources[k]==='sheet'?'シート':'サンプル');}).join('\n');
+  $('hdDate').textContent=TODAY.getFullYear()+'年'+(TODAY.getMonth()+1)+'月'+TODAY.getDate()+'日';
+  fillStaticSelects();
+  onRole(true);
+}
+
+// ===================== ロール（表示範囲） =====================
+function allOffices(){
+  var set={};
+  (D.offices||[]).forEach(function(o){set[o.事業所名]=1;});
+  Object.keys(D.kasan||{}).forEach(function(k){set[k]=1;});
+  return Object.keys(set);
+}
+function officeInfo(name){return (D.offices||[]).filter(function(o){return o.事業所名===name;});}
+function scope(){
+  var all=allOffices();
+  if(role.type==='exec'||!role.value)return all;
+  return all.filter(function(n){
+    var info=officeInfo(n);
+    if(role.type==='office')return n===role.value;
+    var key=role.type==='officer'?'管掌役員':'エリア';
+    return info.some(function(i){return i[key]===role.value;});
+  });
+}
+function inScope(name){return scope().indexOf(name)>=0;}
+function onRole(first){
+  role.type=$('roleSel').value;
+  var sel=$('roleVal');
+  if(role.type==='exec'){sel.style.display='none';role.value='';}
+  else{
+    var vals={};
+    if(role.type==='office')allOffices().forEach(function(n){vals[n]=1;});
+    else (D.offices||[]).forEach(function(o){var v=o[role.type==='officer'?'管掌役員':'エリア'];if(v)vals[v]=1;});
+    sel.innerHTML=Object.keys(vals).map(function(v){return '<option>'+esc(v)+'</option>';}).join('');
+    sel.style.display='';role.value=sel.value;
+  }
+  renderAll();
+}
+function onRoleVal(){role.value=$('roleVal').value;renderAll();}
+
+function fillStaticSelects(){
+  var opts=function(arr){return arr.map(function(v){return '<option>'+esc(v)+'</option>';}).join('');};
+  document.querySelector('#officeForm [name=サービス種別]').innerHTML=opts(SERVICES);
+  document.querySelector('#officeForm [name=地域区分]').innerHTML=opts(Object.keys(AREAS));
+  $('feeArea').innerHTML=opts(Object.keys(AREAS));$('feeArea').value='7級地';
+  $('feeTok').innerHTML=opts(Object.keys(TOKUTEI));$('feeSho').innerHTML=opts(Object.keys(SHOGU));
+  $('inspCat').innerHTML=opts(INSP_CATS);
+}
+function fillOfficeSelects(){
+  var html=scope().map(function(n){return '<option>'+esc(n)+'</option>';}).join('');
+  document.querySelectorAll('.officeSel').forEach(function(s){var v=s.value;s.innerHTML=html;if(v&&scope().indexOf(v)>=0)s.value=v;});
+  ['kasanOffice','chkOffice'].forEach(function(id){var s=$(id),v=s.value;s.innerHTML=html;if(v&&scope().indexOf(v)>=0)s.value=v;});
+  var hs=(D.helpers||[]).filter(function(h){return inScope(h.事業所);});
+  $('hcHelper').innerHTML=hs.map(function(h){return '<option value="'+esc(h.介護員番号)+'">'+esc(h.介護員番号+' '+h.氏名+'（'+h.事業所+'）健診:'+h.健康診断日)+'</option>';}).join('');
+}
+
+// ===================== リスク計算 =====================
+function kasanUnmet(name){
+  var k=(D.kasan||{})[name];if(!k)return [];
+  return ['要件1_情報伝達','要件2_会議開催','要件3_健康診断','要件4_研修実施'].filter(function(r){return k[r].未実施.length>0;}).map(function(r){return k[r];});
+}
+function docIssues(){
+  return (D.documents||[]).filter(function(d){return inScope(d.事業所名);}).map(function(d){
+    var miss=[];
+    if(d.個別援助計画書!=='○')miss.push('個別援助計画書');
+    if(d.重要事項説明書!=='○')miss.push('重要事項説明書');
+    if(d.契約書!=='○')miss.push('契約書');
+    var info=officeInfo(d.事業所名)[0]||{};
+    var price=AREAS[info.地域区分]||10.21;
+    var risk=d.個別援助計画書!=='○'?(Number(d.月額単位数)||0)*price:0;
+    return {d:d,miss:miss,risk:risk,level:d.個別援助計画書!=='○'?'高':miss.length?'中':'低'};
+  }).filter(function(x){return x.miss.length;});
+}
+function officeRisk(name){
+  var sc=0,why=[];
+  officeInfo(name).forEach(function(i){
+    var n=days(i.指定更新日);if(n==null)return;
+    if(n<0){sc+=50;why.push(i.サービス種別+'の指定更新日を過ぎています');}
+    else if(n<=90){sc+=30;why.push(i.サービス種別+'の指定更新まで'+n+'日');}
+    else if(n<=180){sc+=15;why.push(i.サービス種別+'の指定更新まで'+n+'日');}
+  });
+  var docs=docIssues().filter(function(x){return x.d.事業所名===name;});
+  if(docs.length){sc+=docs.length*10;why.push('書類未取得 '+docs.length+'名');}
+  var km=kasanUnmet(name);if(km.length){sc+=km.length*10;why.push('加算要件の未充足 '+km.length+'件');}
+  var open=(D.inspections||[]).filter(function(i){return i.事業所名===name&&i.状態!=='完了';});
+  if(open.length){sc+=open.length*15;why.push('未完了の指摘 '+open.length+'件');}
+  var inc=(D.incidents||[]).filter(function(i){var n=days(i.発生日);return i.事業所名===name&&i.重要度==='高'&&n!=null&&n>=-90;});
+  if(inc.length){sc+=inc.length*10;why.push('重大インシデント(90日) '+inc.length+'件');}
+  return {score:sc,level:sc>=50?'高':sc>=25?'中':'低',why:why};
+}
+function buildAlerts(){
+  var a=[];
+  scope().forEach(function(name){
+    officeInfo(name).forEach(function(i){
+      var n=days(i.指定更新日);if(n==null)return;
+      if(n<0)a.push({l:'高',o:name,t:i.サービス種別+'の指定有効期間が満了しています（'+i.指定更新日+'）',act:'至急、指導権者（'+(i.指導権者||'-')+'）に確認してください。',tab:1});
+      else if(n<=90)a.push({l:'高',o:name,t:i.サービス種別+'の指定更新まで残り'+n+'日（'+i.指定更新日+'）',act:'更新申請の書類を準備してください。行政からの案内が来ない場合もあります。',tab:1});
+      else if(n<=180)a.push({l:'中',o:name,t:i.サービス種別+'の指定更新まで残り'+n+'日',act:'更新申請の時期と必要書類を確認してください。',tab:1});
+    });
+    kasanUnmet(name).forEach(function(r){
+      a.push({l:/健康診断/.test(r.要件名)?'高':'中',o:name,t:'特定事業所加算：'+r.要件名.replace(/（.*）/,'')+' 未充足 '+r.未実施.length+'名（'+r.未実施.slice(0,3).join('、')+(r.未実施.length>3?' ほか':'')+'）',act:r.判定基準+'。満たさない月は加算の返還対象になり得ます。',tab:3});
+    });
+    (D.inspections||[]).filter(function(i){return i.事業所名===name&&i.状態!=='完了';}).forEach(function(i){
+      var n=days(i.改善報告期限);
+      a.push({l:n!=null&&n<14?'高':'中',o:name,t:'改善報告が未完了：'+i.指摘内容,act:'期限 '+(i.改善報告期限||'未設定')+(n!=null?'（残り'+n+'日）':''),tab:8});
+    });
+  });
+  docIssues().forEach(function(x){
+    a.push({l:x.level,o:x.d.事業所名,t:x.d.利用者名+'（'+x.d.利用者ID+'）の'+x.miss.join('・')+'が未取得',act:x.risk?'返還リスク推計 '+yen(x.risk)+'/月。計画を作成し、説明・同意・交付してください。':'説明・同意・交付の記録をそろえてください。',tab:5});
+  });
+  var ord={'高':0,'中':1,'低':2};
+  return a.sort(function(x,y){return ord[x.l]-ord[y.l];});
+}
+function alertHtml(list){
+  if(!list.length)return '<div class="ok">対応が必要なアラートはありません ✅</div>';
+  return list.map(function(x){return '<div class="al al-'+(x.l==='高'?'h':x.l==='中'?'m':'l')+'">'+lvTag(x.l)+'<div style="flex:1"><div><strong>'+esc(x.o)+'</strong>：'+esc(x.t)+'</div><div class="act">→ '+esc(x.act)+'</div></div><button class="btn sub" onclick="go('+x.tab+')">開く</button></div>';}).join('');
+}
+
+// ===================== 描画 =====================
+function renderAll(){
+  if(!D)return;
+  fillOfficeSelects();
+  renderHome();renderOffices();renderKasan();renderStaff();renderDocs();renderInc();
+  renderInspection();renderChecklist();renderLegal();renderAI();renderNotif();feeFromOffice();
+}
+
+function renderHome(){
+  var names=scope();
+  var label={exec:'経営層（全事業所）',officer:'管掌役員：'+role.value,area:'エリア長：'+role.value,office:role.value}[role.type];
+  $('homeTitle').textContent='🏠 ダッシュボード — '+label;
+  var alerts=buildAlerts();
+  var hi=alerts.filter(function(a){return a.l==='高';}).length;
+  var risks=names.map(function(n){return {n:n,r:officeRisk(n)};}).sort(function(a,b){return b.r.score-a.r.score;});
+  var highOff=risks.filter(function(x){return x.r.level==='高';}).length;
+  var kasanNg=names.filter(function(n){return kasanUnmet(n).length;}).length;
+  var docs=docIssues();var refund=docs.reduce(function(s,x){return s+x.risk;},0);
+  var renew=0;names.forEach(function(n){officeInfo(n).forEach(function(i){var d=days(i.指定更新日);if(d!=null&&d<=180)renew++;});});
+  var openInsp=(D.inspections||[]).filter(function(i){return inScope(i.事業所名)&&i.状態!=='完了';}).length;
+  $('homeKpi').innerHTML=[
+    ['🏢運営指導リスク高',highOff+'事業所',highOff?'#c62828':'#2e7d32','対象'+names.length+'事業所',0],
+    ['⭐加算要件 未充足',kasanNg+'事業所',kasanNg?'#e65100':'#2e7d32','研修・会議・健診',3],
+    ['📋書類未取得',docs.length+'名',docs.length?'#c62828':'#2e7d32','計画書・重説・契約',5],
+    ['💴返還リスク推計',yen(refund),refund?'#c62828':'#2e7d32','1か月あたり',5],
+    ['🔔指定更新180日内',renew+'件',renew?'#e65100':'#2e7d32','未完了の指摘 '+openInsp+'件',1]
+  ].map(function(k){return '<div class="si" onclick="go('+k[4]+')"><div class="lb">'+k[0]+'</div><div class="vl" style="color:'+k[2]+';font-size:'+(k[1].length>8?'16px':'20px')+'">'+esc(k[1])+'</div><div class="sub">'+esc(k[3])+'</div></div>';}).join('');
+  $('owl').innerHTML=hi?'要対応は <strong style="color:#c62828">'+hi+'件</strong> です。いちばん急ぐのは「'+esc(alerts[0].o)+'：'+esc(alerts[0].t)+'」です。':'高リスクのアラートはありません。'+(alerts.length?'中リスクが'+alerts.length+'件あります。':'この調子です 🎉');
+  $('homeAlerts').innerHTML=alertHtml(alerts.slice(0,6));
+  var t='<table><tr><th>事業所</th><th>サービス</th><th>エリア</th><th>管掌役員</th><th>リスク</th><th>点数</th><th>主な理由</th></tr>';
+  risks.forEach(function(x){var info=officeInfo(x.n);
+    t+='<tr class="click" onclick="pickOffice(\''+esc(x.n).replace(/'/g,"\\'")+'\')"><td><strong>'+esc(x.n)+'</strong></td><td>'+info.map(function(i){return svTag(i.サービス種別);}).join('')+'</td><td>'+esc(info[0]?info[0].エリア:'')+'</td><td>'+esc(info[0]?info[0].管掌役員:'')+'</td><td>'+lvTag(x.r.level)+'</td><td>'+x.r.score+'</td><td style="font-size:10px">'+esc(x.r.why.join(' / ')||'-')+'</td></tr>';});
+  $('homeOffices').innerHTML=t+'</table>';
+}
+function pickOffice(n){$('roleSel').value='office';onRole();$('roleVal').value=n;onRoleVal();}
+
+function renderOffices(){
+  var rows=(D.offices||[]).filter(function(o){return inScope(o.事業所名);});
+  var al=rows.map(function(o){return {o:o,n:days(o.指定更新日)};}).filter(function(x){return x.n!=null&&x.n<=180;}).sort(function(a,b){return a.n-b.n;});
+  $('renewAlerts').innerHTML=al.length?al.map(function(x){var l=x.n<=90?'高':'中';return '<div class="al al-'+(l==='高'?'h':'m')+'">'+lvTag(l)+'<div><strong>'+esc(x.o.事業所名)+'</strong> '+svTag(x.o.サービス種別)+' 指定更新日 '+esc(x.o.指定更新日)+'（'+(x.n<0?'<span class="ng">'+(-x.n)+'日超過</span>':'残り'+x.n+'日')+'）<div class="act">→ 事業所番号 '+esc(x.o.事業所番号)+'／指導権者 '+esc(x.o.指導権者)+'</div></div></div>';}).join(''):'<div class="ok">180日以内に指定更新を迎える事業所はありません ✅</div>';
+  var t='<table><tr><th>事業所名</th><th>サービス</th><th>事業所番号</th><th>開設日</th><th>指定更新日</th><th>残り</th><th>指導権者</th><th>エリア</th><th>管掌役員</th><th>利用者</th><th>加算</th><th>地域区分</th><th></th></tr>';
+  rows.forEach(function(o,i){var n=days(o.指定更新日);
+    t+='<tr><td><strong>'+esc(o.事業所名)+'</strong></td><td>'+svTag(o.サービス種別)+'</td><td>'+esc(o.事業所番号)+'</td><td>'+esc(o.開設日)+'</td><td>'+esc(o.指定更新日)+'</td><td class="'+(n==null?'':n<=90?'ng':n<=180?'warn':'ok')+'">'+(n==null?'-':n<0?'超過':n+'日')+'</td><td>'+esc(o.指導権者)+'</td><td>'+esc(o.エリア)+'</td><td>'+esc(o.管掌役員)+'</td><td>'+esc(o.利用者数)+'</td><td>'+esc(o.特定事業所加算)+' / '+esc(o.処遇改善加算)+'</td><td>'+esc(o.地域区分)+'</td><td><button class="btn sub" onclick="editOffice('+D.offices.indexOf(o)+')">編集</button></td></tr>';});
+  $('officeTable').innerHTML=t+'</table>';
+}
+function editOffice(i){var o=D.offices[i];document.querySelectorAll('#officeForm [name]').forEach(function(el){el.value=o[el.name]==null?'':o[el.name];});$('officeForm').scrollIntoView({behavior:'smooth'});}
+function submitOffice(){
+  var p=formVals('officeForm');if(!p.事業所名)return toast('事業所名を入れてください');
+  if(p.事業所番号&&!/^\d{10}$/.test(p.事業所番号))return toast('事業所番号は10桁の数字です');
+  call('saveOffice',[p],function(){
+    var idx=-1;D.offices.forEach(function(o,i){if(o.事業所名===p.事業所名&&o.サービス種別===p.サービス種別)idx=i;});
+    if(idx>=0)D.offices[idx]=p;else D.offices.push(p);
+    toast(LIVE?'保存しました':'保存しました（デモのためシートには書き込みません）');clearForm('officeForm');renderAll();
+  });
+}
+
+function renderKasan(){
+  var names=scope();var sel=$('kasanOffice');
+  var t='<table><tr><th>事業所</th><th>人数</th><th>研修</th><th>会議</th><th>健診</th><th>総合</th></tr>';
+  names.filter(function(n){return D.kasan[n];}).forEach(function(n){var o=D.kasan[n];
+    var cell=function(r){var p=parseInt(r.充足率,10);return '<td><div style="display:flex;gap:6px;align-items:center"><div class="bar" style="flex:1"><i style="width:'+p+'%;background:'+(p===100?'#2e7d32':p>=80?'#f57c00':'#c62828')+'"></i></div><span>'+r.充足率+'</span></div></td>';};
+    t+='<tr class="click" onclick="$(\'kasanOffice\').value=\''+esc(n).replace(/'/g,"\\'")+'\';renderKasan()"><td><strong>'+esc(n)+'</strong></td><td>'+o.総人数+'</td>'+cell(o.要件4_研修実施)+cell(o.要件2_会議開催)+cell(o.要件3_健康診断)+'<td class="'+(/全要件/.test(o.総合判定)?'ok':'warn')+'">'+esc(o.総合判定)+'</td></tr>';});
+  $('kasanAll').innerHTML=t+'</table>';
+  var nm=sel.value;var o=D.kasan[nm];
+  if(!o){$('sum').innerHTML='';$('helpers').innerHTML='この事業所の研修管理データはありません';['r1','r2','r4','r9'].forEach(function(id){$(id).innerHTML='-';});return;}
+  var r2=o.要件2_会議開催,r3=o.要件3_健康診断,r4=o.要件4_研修実施;
+  $('r1').innerHTML=r4.未実施.length===0?'<span class="ok">✅全員('+r4.充足人数+')</span>':'<span class="warn">⚠️未'+r4.未実施.length+'名('+r4.充足人数+')</span>';
+  $('r2').innerHTML=r2.未実施.length===0?'<span class="ok">✅全員('+r2.充足人数+')</span>':'<span class="warn">⚠️未'+r2.未実施.length+'名('+r2.充足人数+')</span>';
+  $('r4').innerHTML=r3.未実施.length===0?'<span class="ok">✅全員('+r3.充足人数+')</span>':'<span class="ng">❌未'+r3.未実施.length+'名('+r3.充足人数+')</span>';
+  var st=(D.staff||[]).filter(function(s){return s.事業所名===nm&&s.異動区分!=='退職';});
+  if(st.length){var kf=st.filter(function(s){return s.資格==='介護福祉士';}).length;var p=Math.round(kf/st.length*100);$('r9').innerHTML='<span class="'+(p>=30?'ok':'ng')+'">'+(p>=30?'✅':'❌')+p+'%（'+kf+'/'+st.length+'名）</span>';}
+  else $('r9').innerHTML='<span class="mut">人事登録なし</span>';
+  var tile=function(lb,r,bad){return '<div class="si"><div class="lb">'+lb+'</div><div class="vl" style="color:'+(r.未実施.length?bad:'#2e7d32')+'">'+r.充足率+'</div><div class="sub">'+r.充足人数+'</div></div>';};
+  $('sum').innerHTML=tile('🗓️会議(要件2)',r2,'#e65100')+tile('📚研修(要件1)',r4,'#e65100')+tile('🏥健診(要件4)',r3,'#c62828')+'<div class="si"><div class="lb">📢伝達(要件3)</div><div class="vl" style="color:#888">—</div><div class="sub">介護ソフトで確認</div></div>';
+  $('msg').innerHTML='【'+esc(nm)+'（'+o.総人数+'名）】'+esc(o.総合判定)+(D.sources.kasan==='sample'?' <span class="src src-demo">サンプル</span>':'');
+  var only=$('onlyNg').checked;
+  var list=(D.helpers||[]).filter(function(h){return h.事業所===nm&&(!only||h.健康診断_判定!=='✅'||h.留意点会議_判定==='⚠️'||h.研修_判定!=='✅');});
+  var h='<table><tr><th>番号</th><th>氏名</th><th>留意点会議</th><th></th><th>研修1</th><th>研修2</th><th></th><th>健康診断</th><th></th></tr>';
+  list.forEach(function(x){
+    var bg=(x.健康診断_判定!=='✅'||x.留意点会議_判定==='⚠️'||x.研修_判定!=='✅')?' style="background:#fff8e1"':'';
+    h+='<tr'+bg+'><td>'+esc(x.介護員番号)+'</td><td><strong>'+esc(x.氏名)+'</strong></td><td>'+esc(x.留意点会議日)+'</td><td class="'+(x.留意点会議_判定==='⚠️'?'warn':'ok')+'">'+esc(x.留意点会議_判定)+'</td><td>'+esc(x.研修1日)+'</td><td>'+esc(x.研修2日)+'</td><td class="'+(x.研修_判定==='✅'?'ok':'warn')+'">'+esc(x.研修_判定)+'</td><td>'+esc(x.健康診断日)+'</td><td class="'+(x.健康診断_判定==='✅'?'ok':'ng')+'">'+esc(x.健康診断_判定)+'</td></tr>';});
+  $('helpers').innerHTML=list.length?h+'</table>':'<div class="ok">該当者はいません</div>';
+}
+
+function renderStaff(){
+  var st=(D.staff||[]).filter(function(s){return inScope(s.事業所名);});
+  var t='<table><tr><th>事業所</th><th>利用者数</th><th>職員(在籍)</th><th>常勤換算</th><th>サ責 配置/必要</th><th>介福割合</th><th>判定</th></tr>';
+  scope().forEach(function(n){
+    var info=officeInfo(n).filter(function(i){return i.サービス種別==='訪問介護';})[0];if(!info)return;
+    var s=st.filter(function(x){return x.事業所名===n&&x.異動区分!=='退職'&&x.異動区分!=='産休・育休'&&x.異動区分!=='サ責退任';});
+    var hrs=s.filter(function(x){return x.職種!=='事務員';}).reduce(function(a,x){return a+(Number(x.週勤務時間)||0);},0);
+    var fte=Math.round(hrs/40*10)/10;var sat=s.filter(function(x){return x.サ責==='○';}).length;
+    var need=Math.max(1,Math.ceil((Number(info.利用者数)||0)/40));
+    var kf=s.length?Math.round(s.filter(function(x){return x.資格==='介護福祉士';}).length/s.length*100):0;
+    var ok=fte>=2.5&&sat>=need;
+    t+='<tr><td><strong>'+esc(n)+'</strong></td><td>'+esc(info.利用者数)+'名</td><td>'+s.length+'名</td><td class="'+(fte>=2.5?'ok':'ng')+'">'+fte+'</td><td class="'+(sat>=need?'ok':'ng')+'">'+sat+' / '+need+'</td><td class="'+(kf>=30?'ok':'warn')+'">'+kf+'%</td><td class="'+(ok?'ok':'ng')+'">'+(ok?'✅基準充足':'❌要確認')+'</td></tr>';});
+  $('staffJudge').innerHTML=t+'</table><div class="note">常勤換算は週40時間を1.0として計算しています。在籍者のみ（退職・産休育休・サ責退任は除く）。</div>';
+  var h='<table><tr><th>登録日</th><th>事業所</th><th>氏名</th><th>職種</th><th>資格</th><th>常勤</th><th>サ責</th><th>週時間</th><th>異動</th><th>届出</th></tr>';
+  st.slice().reverse().forEach(function(s){h+='<tr><td>'+esc(s.登録日)+'</td><td>'+esc(s.事業所名)+'</td><td>'+esc(s.氏名)+'</td><td>'+esc(s.職種)+'</td><td>'+esc(s.資格)+'</td><td>'+esc(s.常勤区分)+'</td><td>'+esc(s.サ責)+'</td><td>'+esc(s.週勤務時間)+'</td><td>'+esc(s.異動区分)+'</td><td class="'+(s.届出要否==='不要'?'':'warn')+'">'+esc(s.届出要否)+'</td></tr>';});
+  $('staffTable').innerHTML=st.length?h+'</table>':'<div class="mut">登録はまだありません</div>';
+}
+function submitStaff(){
+  var p=formVals('staffForm');if(!p.氏名)return toast('氏名を入れてください');
+  call('saveStaff',[p],function(r){
+    var needs=(p.サ責==='○'||p.職種==='管理者'||p.職種==='サービス提供責任者')?'要（変更届）':'不要';
+    p.登録日=ymd(TODAY);p.届出要否=r?r.届出要否:needs;p.届出期限=r?r.届出期限:(needs==='不要'?'':ymd(addDays(TODAY,10)));p.届出状況=needs==='不要'?'-':'未提出';
+    D.staff.push(p);clearForm('staffForm');renderAll();
+    toast('登録しました'+(needs!=='不要'?'。変更届が必要です（届出タブ）':'')+(LIVE?'':'（デモのため保存されません）'));
+  });
+}
+
+function renderDocs(){
+  var all=(D.documents||[]).filter(function(d){return inScope(d.事業所名);});
+  var is=docIssues();var refund=is.reduce(function(s,x){return s+x.risk;},0);
+  var c=function(k){return is.filter(function(x){return x.miss.indexOf(k)>=0;}).length;};
+  $('docKpi').innerHTML=[['対象利用者',all.length+'名','#1565c0'],['計画書 未取得',c('個別援助計画書')+'名','#c62828'],['重説・契約 未取得',(is.filter(function(x){return x.miss.indexOf('重要事項説明書')>=0||x.miss.indexOf('契約書')>=0;}).length)+'名','#e65100'],['返還リスク推計',yen(refund)+'/月','#c62828']]
+    .map(function(k){return '<div class="si"><div class="lb">'+k[0]+'</div><div class="vl" style="color:'+k[2]+';font-size:'+(k[1].length>8?'15px':'20px')+'">'+k[1]+'</div></div>';}).join('');
+  var t='<table><tr><th>リスク</th><th>事業所</th><th>利用者</th><th>契約書</th><th>重説</th><th>計画書</th><th>計画同意日</th><th>月額単位</th><th>返還リスク/月</th></tr>';
+  var mk=function(v){return v==='○'?'<span class="ok">○</span>':'<span class="ng">未</span>';};
+  is.sort(function(a,b){return b.risk-a.risk;}).forEach(function(x){var d=x.d;
+    t+='<tr><td>'+lvTag(x.level)+'</td><td>'+esc(d.事業所名)+'</td><td>'+esc(d.利用者名)+'<div class="mut">'+esc(d.利用者ID)+'</div></td><td>'+mk(d.契約書)+'</td><td>'+mk(d.重要事項説明書)+'</td><td>'+mk(d.個別援助計画書)+'</td><td>'+esc(d.計画同意日||'-')+'</td><td>'+esc(d.月額単位数)+'</td><td class="'+(x.risk?'ng':'')+'">'+(x.risk?yen(x.risk):'-')+'</td></tr>';});
+  $('docTable').innerHTML=is.length?t+'</table>':'<div class="ok">未取得の書類はありません ✅</div>';
+}
+
+function renderInc(){
+  var inc=(D.incidents||[]).filter(function(i){return inScope(i.事業所名);});
+  var crumb='<a onclick="incPath=[];renderInc()">全事業所</a>';
+  if(incPath[0])crumb+=' › <a onclick="incPath=[incPath[0]];renderInc()">'+esc(incPath[0])+'</a>';
+  if(incPath[1])crumb+=' › '+esc(incPath[1]);
+  $('incCrumb').innerHTML=crumb;
+  var lv=['高','中','低'];
+  var group=function(arr,key){var g={};arr.forEach(function(i){(g[i[key]]=g[i[key]]||[]).push(i);});return g;};
+  var max;
+  if(!incPath[0]){
+    var g=group(inc,'事業所名');max=Math.max.apply(null,[1].concat(Object.keys(g).map(function(k){return g[k].length;})));
+    var t='<table><tr><th>事業所</th><th>件数</th><th></th>'+lv.map(function(l){return '<th>'+l+'</th>';}).join('')+'<th>未対応</th></tr>';
+    Object.keys(g).sort(function(a,b){return g[b].length-g[a].length;}).forEach(function(k){
+      t+='<tr class="click" onclick="incPath=[\''+esc(k).replace(/'/g,"\\'")+'\'];renderInc()"><td><strong>'+esc(k)+'</strong> ›</td><td>'+g[k].length+'</td><td style="width:30%"><div class="bar"><i style="width:'+(g[k].length/max*100)+'%"></i></div></td>'+lv.map(function(l){var n=g[k].filter(function(i){return i.重要度===l;}).length;return '<td class="'+(l==='高'&&n?'ng':'')+'">'+n+'</td>';}).join('')+'<td>'+g[k].filter(function(i){return i.対応状況!=='対応済';}).length+'</td></tr>';});
+    $('incBody').innerHTML=inc.length?t+'</table>':'<div class="mut">インシデントの記録はありません</div>';
+  } else if(!incPath[1]){
+    var sub=inc.filter(function(i){return i.事業所名===incPath[0];});var g2=group(sub,'区分');
+    max=Math.max.apply(null,[1].concat(Object.keys(g2).map(function(k){return g2[k].length;})));
+    var t2='<table><tr><th>区分</th><th>件数</th><th></th><th>うち重要度 高</th></tr>';
+    Object.keys(g2).sort(function(a,b){return g2[b].length-g2[a].length;}).forEach(function(k){
+      t2+='<tr class="click" onclick="incPath=[incPath[0],\''+esc(k).replace(/'/g,"\\'")+'\'];renderInc()"><td><strong>'+esc(k)+'</strong> ›</td><td>'+g2[k].length+'</td><td style="width:40%"><div class="bar"><i style="width:'+(g2[k].length/max*100)+'%"></i></div></td><td>'+g2[k].filter(function(i){return i.重要度==='高';}).length+'</td></tr>';});
+    $('incBody').innerHTML=t2+'</table>';
+  } else {
+    var rows=inc.filter(function(i){return i.事業所名===incPath[0]&&i.区分===incPath[1];}).sort(function(a,b){return String(b.発生日).localeCompare(String(a.発生日));});
+    var t3='<table><tr><th>発生日</th><th>重要度</th><th>概要</th><th>対応状況</th></tr>';
+    rows.forEach(function(i){t3+='<tr><td>'+esc(i.発生日)+'</td><td>'+lvTag(i.重要度)+'</td><td>'+esc(i.概要)+'</td><td class="'+(i.対応状況==='対応済'?'ok':'warn')+'">'+esc(i.対応状況)+'</td></tr>';});
+    $('incBody').innerHTML=t3+'</table>';
+  }
+}
+
+function renderInspection(){
+  var ins=(D.inspections||[]).filter(function(i){return inScope(i.事業所名);});
+  // 次回見込み：介護保険サービスは指定有効期間（6年）内に1回以上
+  var t='<table><tr><th>事業所</th><th>サービス</th><th>前回の運営指導</th><th>経過</th><th>指定更新日</th><th>見込み</th></tr>';
+  scope().forEach(function(n){officeInfo(n).forEach(function(i){
+    var past=ins.filter(function(x){return x.事業所名===n&&x.区分==='運営指導';}).map(function(x){return x.実施日;}).sort().pop();
+    var yrs=past?Math.floor(-days(past)/365*10)/10:null;
+    var nd=days(i.指定更新日);
+    var lvl=(!past&&nd!=null&&nd<=730)||(yrs!=null&&yrs>=5)?'高':(yrs==null||yrs>=3)?'中':'低';
+    var msg=lvl==='高'?'指定の有効期間内に未実施の可能性。近く通知が来る見込み':lvl==='中'?'3年以上経過。準備を始める時期':'前回から間もない';
+    t+='<tr><td>'+esc(n)+'</td><td>'+svTag(i.サービス種別)+'</td><td>'+esc(past||'記録なし')+'</td><td>'+(yrs==null?'-':yrs+'年')+'</td><td>'+esc(i.指定更新日)+'</td><td>'+lvTag(lvl)+' '+msg+'</td></tr>';});});
+  $('nextInsp').innerHTML=t+'</table>';
+  // 指摘傾向（下田さん要望）
+  var g={};ins.forEach(function(i){if(i.指摘区分)g[i.指摘区分]=(g[i.指摘区分]||0)+1;});
+  var keys=Object.keys(g).sort(function(a,b){return g[b]-g[a];});var max=keys.length?g[keys[0]]:1;
+  var h='<table><tr><th>指摘区分</th><th>件数</th><th style="width:30%"></th><th>次回までの留意点</th></tr>';
+  keys.forEach(function(k,ix){h+='<tr><td><strong>'+esc(k)+'</strong>'+(ix<3?' <span class="lv lv-h">上位</span>':'')+'</td><td>'+g[k]+'</td><td><div class="bar"><i style="width:'+(g[k]/max*100)+'%"></i></div></td><td style="font-size:11px">'+esc(ADVICE[k]||ADVICE['その他'])+'</td></tr>';});
+  $('trend').innerHTML=keys.length?'<div class="ch" style="margin-bottom:8px"><div class="chi">🦉</div><div>過去'+ins.length+'件の指摘では「<strong>'+esc(keys.slice(0,3).join('」「'))+'</strong>」が多くなっています。事前提出資料の準備では、まずこの区分の書類から自己点検してください。</div></div>'+h+'</table>':'<div class="mut">指摘の記録がありません</div>';
+  // 履歴（中山さん要望）
+  var r='<table><tr><th>実施日</th><th>事業所</th><th>区分</th><th>指導権者</th><th>指摘区分</th><th>指摘内容</th><th>改善報告期限</th><th>報告日</th><th>状態</th></tr>';
+  ins.slice().sort(function(a,b){return String(b.実施日).localeCompare(String(a.実施日));}).forEach(function(i){
+    r+='<tr><td>'+esc(i.実施日)+'</td><td>'+esc(i.事業所名)+'</td><td>'+esc(i.区分)+'</td><td>'+esc(i.指導権者)+'</td><td>'+esc(i.指摘区分)+'</td><td>'+esc(i.指摘内容)+'</td><td>'+esc(i.改善報告期限)+'</td><td>'+esc(i.改善報告日||'-')+'</td><td class="'+(i.状態==='完了'?'ok':'warn')+'">'+esc(i.状態)+'</td></tr>';});
+  $('inspTable').innerHTML=ins.length?r+'</table>':'<div class="mut">履歴はまだありません</div>';
+}
+function submitInsp(){
+  var p=formVals('inspForm');if(!p.実施日||!p.指摘内容)return toast('実施日と指摘内容を入れてください');
+  p.状態='改善報告待ち';p.改善報告日='';
+  call('saveInspection',[p],function(){D.inspections.push(p);clearForm('inspForm');renderAll();toast('追加しました'+(LIVE?'':'（デモのため保存されません）'));});
+}
+
+function renderChecklist(){
+  var n=$('chkOffice').value;if(!n){$('chkBody').innerHTML='';return;}
+  var svc=officeInfo(n).map(function(i){return i.サービス種別;});
+  var groups=['共通'].concat(svc.filter(function(s){return CHECK[s];}));
+  var st=chkState[n]||{};var total=0,okN=0,ngN=0;
+  var h='';
+  groups.forEach(function(g){
+    h+='<div style="font-weight:700;margin:8px 0 4px">'+esc(g)+'</div><table><tr><th style="width:60px">区分</th><th>確認項目</th><th style="width:170px">結果</th></tr>';
+    CHECK[g].forEach(function(it,ix){var id=g+'-'+ix;var v=st[id]||'';total++;if(v==='OK')okN++;if(v==='NG')ngN++;
+      h+='<tr'+(v==='NG'?' style="background:#ffebee"':'')+'><td>'+esc(it[0])+'</td><td>'+esc(it[1])+'</td><td><span class="seg">'+['OK','NG',''].map(function(o){return '<button class="'+(v===o?'on':'')+'" onclick="setChk(\''+esc(n).replace(/'/g,"\\'")+'\',\''+id+'\',\''+o+'\')">'+(o==='OK'?'適':o==='NG'?'要改善':'未確認')+'</button>';}).join('')+'</span></td></tr>';});
+    h+='</table>';});
+  var p=total?Math.round(okN/total*100):0;
+  $('chkBody').innerHTML='<div style="display:flex;gap:10px;align-items:center;margin-bottom:6px"><strong>準備率 '+p+'%</strong><div class="bar" style="flex:1"><i style="width:'+p+'%"></i></div><span class="mut">適 '+okN+' / 要改善 <span class="ng">'+ngN+'</span> / 全'+total+'項目</span></div>'+h;
+}
+function setChk(n,id,v){chkState[n]=chkState[n]||{};chkState[n][id]=v;renderChecklist();}
+function saveChk(){
+  var n=$('chkOffice').value;
+  if(!LIVE){try{localStorage.setItem('m20_chk',JSON.stringify(chkState));}catch(e){}toast('このブラウザに保存しました（デモ）');return;}
+  call('saveChecklist',[n,chkState[n]||{}],function(){toast('保存しました');});
+}
+
+function renderLegal(){
+  var l=(D.legal||[]).filter(function(x){return inScope(x.事業所名);});
+  var t='<table><tr><th>受付日時</th><th>事業所</th><th>相談者</th><th>カテゴリ</th><th>緊急度</th><th>内容</th><th>状態</th></tr>';
+  l.slice().reverse().forEach(function(x){t+='<tr><td>'+esc(x.受付日時)+'</td><td>'+esc(x.事業所名)+'</td><td>'+esc(x.相談者)+'</td><td>'+esc(x.カテゴリ)+'</td><td class="'+(/至急/.test(x.緊急度)?'ng':'')+'">'+esc(x.緊急度)+'</td><td>'+esc(x.相談内容)+'</td><td>'+esc(x.状態)+'</td></tr>';});
+  $('legalTable').innerHTML=l.length?t+'</table>':'<div class="mut">相談の記録はありません</div>';
+}
+function submitLegal(){
+  var p=formVals('legalForm');if(!p.相談内容)return toast('相談内容を入れてください');
+  call('saveLegal',[p],function(r){var d=new Date();p.受付日時=ymd(d)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);p.状態='受付';D.legal.push(p);clearForm('legalForm');renderLegal();
+    toast(LIVE?(r&&r.mailed?'受け付けました。担当者にメールで通知しました':'受け付けました（通知先未設定のため記録のみ）'):'受け付けました（デモのため保存されません）');});
+}
+
+function renderAI(){
+  $('allAlerts').innerHTML=alertHtml(buildAlerts());
+  var t='<table><tr><th>事業所</th><th>特定事業所加算</th><th>未充足の要件</th><th>喪失リスク</th><th>影響額の目安/月</th></tr>';
+  scope().forEach(function(n){var k=D.kasan[n];if(!k)return;
+    var info=officeInfo(n).filter(function(i){return i.サービス種別==='訪問介護';})[0]||{};
+    var um=kasanUnmet(n);var worst=um.reduce(function(m,r){return Math.max(m,r.未実施.length/k.総人数);},0);
+    var pct=um.length?Math.min(95,Math.round(20+worst*100+um.length*10)):5;
+    var rate=TOKUTEI[info.特定事業所加算]||0;
+    var amt=(Number(info.利用者数)||0)*3000*rate*(AREAS[info.地域区分]||10.21);
+    t+='<tr><td><strong>'+esc(n)+'</strong></td><td>'+esc(info.特定事業所加算||'-')+'</td><td>'+(um.length?um.map(function(r){return esc(r.要件名.replace(/（.*）/,''))+'（'+r.未実施.length+'名）';}).join('<br>'):'<span class="ok">なし</span>')+'</td><td class="'+(pct>=50?'ng':pct>=25?'warn':'ok')+'">'+pct+'%</td><td>'+(rate?yen(amt*pct/100):'-')+'</td></tr>';});
+  $('lossRisk').innerHTML=t+'</table><div class="note">喪失リスクは未充足の人数割合と要件数から算出した目安。影響額 = 利用者数 × 平均3,000単位 × 加算率 × 地域単価 × リスク。</div>';
+}
+
+function renderNotif(){
+  var st=(D.staff||[]).filter(function(s){return inScope(s.事業所名)&&s.届出要否&&s.届出要否!=='不要';});
+  var t='<table><tr><th>事業所</th><th>氏名</th><th>職種</th><th>異動</th><th>登録日</th><th>届出期限</th><th>状況</th><th></th></tr>';
+  st.forEach(function(s){var n=days(s.届出期限);var i=D.staff.indexOf(s);
+    t+='<tr><td>'+esc(s.事業所名)+'</td><td>'+esc(s.氏名)+'</td><td>'+esc(s.職種)+'</td><td>'+esc(s.異動区分)+'</td><td>'+esc(s.登録日)+'</td><td class="'+(n!=null&&n<=3&&s.届出状況!=='提出済'?'ng':'')+'">'+esc(s.届出期限)+(n!=null&&s.届出状況!=='提出済'?'（残り'+n+'日）':'')+'</td><td class="'+(s.届出状況==='提出済'?'ok':'warn')+'">'+esc(s.届出状況)+'</td><td><button class="btn sub" onclick="draftNotif('+i+')">下書き</button></td></tr>';});
+  $('notifTable').innerHTML=st.length?t+'</table>':'<div class="ok">届出が必要な変更はありません ✅</div>';
+}
+function draftNotif(i){
+  var s=D.staff[i];var info=officeInfo(s.事業所名)[0]||{};
+  $('notifDraft').innerHTML='<pre class="doc">変更届出書（下書き）\n\n提出先：'+esc(info.指導権者||'（指導権者）')+'\n事業所名：'+esc(s.事業所名)+'\n事業所番号：'+esc(info.事業所番号||'')+'\nサービス種別：'+esc(info.サービス種別||'')+'\n\n変更があった事項：'+(s.職種==='管理者'?'管理者の氏名及び住所':'サービス提供責任者の氏名、生年月日、住所及び経歴')+'\n変更の内容：'+esc(s.異動区分)+'　'+esc(s.氏名)+'（'+esc(s.職種)+'・'+esc(s.資格)+'・'+esc(s.常勤区分)+'）\n変更年月日：'+esc(s.登録日)+'\n提出期限：'+esc(s.届出期限)+'\n\n添付書類：勤務形態一覧表、資格証の写し、経歴書（指導権者の様式を確認）</pre>';
+}
+
+function feeFromOffice(){var info=officeInfo($('feeOffice').value).filter(function(i){return i.サービス種別==='訪問介護';})[0];if(info){if(AREAS[info.地域区分])$('feeArea').value=info.地域区分;if(TOKUTEI[info.特定事業所加算]!=null)$('feeTok').value=info.特定事業所加算;if(SHOGU[info.処遇改善加算]!=null)$('feeSho').value=info.処遇改善加算;}renderFee();}
+function renderFee(){
+  var price=AREAS[$('feeArea').value]||10;var tr=TOKUTEI[$('feeTok').value]||0;var sr=SHOGU[$('feeSho').value]||0;
+  var t='<table><tr><th>サービス内容</th><th>基本単位</th><th>特定加算</th><th>処遇改善</th><th>合計単位</th><th>費用額</th><th>保険給付(9割)</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr>';
+  FEE_CODES.forEach(function(c){
+    var u=c[1];var tk=Math.round(u*tr);var sh=Math.round((u+tk)*sr);var tot=u+tk+sh;
+    var cost=Math.floor(tot*price);var b1=cost-Math.floor(cost*0.9),b2=cost-Math.floor(cost*0.8),b3=cost-Math.floor(cost*0.7);
+    t+='<tr><td>'+esc(c[0])+'</td><td>'+u+'</td><td>'+tk+'</td><td>'+sh+'</td><td><strong>'+tot+'</strong></td><td>'+yen(cost)+'</td><td>'+yen(Math.floor(cost*0.9))+'</td><td><strong>'+yen(b1)+'</strong></td><td>'+yen(b2)+'</td><td>'+yen(b3)+'</td></tr>';});
+  $('feeTable').innerHTML='<div style="margin-bottom:6px;font-size:12px">地域単価 <strong>'+price.toFixed(2)+'円</strong>／特定加算 '+(tr*100)+'%／処遇改善 '+(Math.round(sr*1000)/10)+'%</div>'+t+'</table>';
+}
+function printFee(){var w=window.open('','_blank');w.document.write('<html><head><meta charset="UTF-8"><title>料金表</title><style>body{font-family:sans-serif;font-size:12px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #999;padding:4px}</style></head><body><h3>訪問介護 料金表（'+esc($('feeOffice').value)+'）</h3>'+$('feeTable').innerHTML+'</body></html>');w.document.close();w.print();}
+
+// ===================== 健診取込 =====================
+function hcPreview(){var f=$('hcFile').files[0];hc.file=f;hc.result=null;$('hcResult').innerHTML='';if(!f)return;var r=new FileReader();r.onload=function(){$('hcImg').src=r.result;$('hcImg').style.display='block';};r.readAsDataURL(f);}
+function hcUpload(){
+  var f=hc.file;var no=$('hcHelper').value;if(!f)return toast('写真を選んでください');if(!no)return toast('介護員を選んでください');
+  var h=(D.helpers||[]).filter(function(x){return x.介護員番号===no;})[0];
+  $('hcUp').disabled=true;$('hcResult').innerHTML='📡 読み取り中…';
+  shrink(f,function(dataUrl){
+    var b64=dataUrl.split(',')[1];
+    var done=function(r){$('hcUp').disabled=false;hc.result=r;
+      var cands=(r&&r.dateCandidates)||[];
+      $('hcResult').innerHTML=(r&&r.ocrError?'<div class="warn">'+esc(r.ocrError)+'</div>':'')+(LIVE?'':'<div class="warn">デモのため OCR は動きません。受診日を入力して確定の流れだけ試せます。</div>')+
+        (cands.length?'<div>読み取った日付の候補：'+cands.map(function(c){return '<button class="btn sub" onclick="$(\'hcDate\').value=\''+c+'\'">'+c+'</button>';}).join(' ')+'</div>':'<div class="mut">日付を読み取れませんでした。手入力してください。</div>')+
+        '<div class="fm" style="margin-top:6px"><div><label>受診日（確認して確定）</label><input type="date" id="hcDate" value="'+(cands[0]||'')+'"></div></div><button class="btn" onclick="hcConfirm(\''+esc(no)+'\',\''+esc(h?h.氏名:'').replace(/'/g,"\\'")+'\')">✅ この日付で研修管理シートに格納</button>'+
+        (r&&r.text?'<details style="margin-top:6px"><summary class="mut">OCR全文</summary><pre class="doc">'+esc(r.text)+'</pre></details>':'');};
+    if(LIVE)google.script.run.withSuccessHandler(done).withFailureHandler(function(e){$('hcUp').disabled=false;$('hcResult').innerHTML='<div class="ng">'+esc(e.message)+'</div>';}).uploadHealthImage(b64,'image/jpeg',no,h?h.氏名:'');
+    else done({dateCandidates:[],text:''});
+  });
+}
+// 大きな写真は長辺1600pxに縮小してから送る
+function shrink(file,cb){var img=new Image();var url=URL.createObjectURL(file);img.onload=function(){var s=Math.min(1,1600/Math.max(img.width,img.height));var c=document.createElement('canvas');c.width=img.width*s;c.height=img.height*s;c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);cb(c.toDataURL('image/jpeg',0.85));};img.onerror=function(){var r=new FileReader();r.onload=function(){cb(r.result);};r.readAsDataURL(file);};img.src=url;}
+function hcConfirm(no,name){
+  var d=$('hcDate').value;if(!d)return toast('受診日を入れてください');
+  var r=hc.result||{};
+  call('confirmHealthDate',[no,name,d,r.fileUrl||'',r.text||''],function(){
+    (D.helpers||[]).forEach(function(h){if(h.介護員番号===no){h.健康診断日=d.replace(/-0?/g,'/');h.健康診断_判定=days(d)>=-365?'✅':'⚠️期限切';}});
+    if(!LIVE)D.kasan=computeKasan(D.helpers);
+    toast(LIVE?'格納しました。加算管理に反映するには「最新取得」を押してください':'反映しました（デモ）');
+    $('hcResult').innerHTML='<div class="ok">✅ '+esc(name)+' の健康診断日を '+esc(d)+' で格納しました</div>';$('hcFile').value='';$('hcImg').style.display='none';hc.file=null;
+    renderAll();
+  });
+}
+
+// ===================== タブ切替 =====================
+function go(n){var ps=document.querySelectorAll('.s');for(var i=0;i<ps.length;i++)ps[i].classList.toggle('on',ps[i].id==='p'+n);var ts=document.querySelectorAll('.tab');for(var j=0;j<ts.length;j++)ts[j].classList.toggle('on',j===n);window.scrollTo(0,0);}
+
+// ===================== デモデータ（スプシ未連携時） =====================
+function computeKasan(helpers){
+  var out={};
+  helpers.forEach(function(h){
+    var o=out[h.事業所]=out[h.事業所]||{総人数:0,要件1_情報伝達:{要件名:'利用者情報・留意事項の伝達（毎回のサービス提供前）',判定基準:'留意点会議に出席し情報共有を実施',充足:0,未実施:[]},要件2_会議開催:{要件名:'サ責による定期的な会議の開催',判定基準:'月1回以上の会議に参加（留意点会議日が直近1ヶ月以内）',充足:0,未実施:[]},要件3_健康診断:{要件名:'全ての訪問介護員等に対する健康診断の定期的な実施',判定基準:'1年以内に健康診断を受診',充足:0,未実施:[]},要件4_研修実施:{要件名:'訪問介護員の資質向上のための研修機会の確保',判定基準:'1年以内に研修を受講（研修1または研修2）',充足:0,未実施:[]}};
+    o.総人数++;
+    var m=h.留意点会議_判定!=='⚠️';[o.要件1_情報伝達,o.要件2_会議開催].forEach(function(r){if(m)r.充足++;else r.未実施.push(h.氏名);});
+    if(h.健康診断_判定==='✅')o.要件3_健康診断.充足++;else o.要件3_健康診断.未実施.push(h.氏名);
+    if(h.研修_判定==='✅')o.要件4_研修実施.充足++;else o.要件4_研修実施.未実施.push(h.氏名);
+  });
+  Object.keys(out).forEach(function(k){var o=out[k];['要件1_情報伝達','要件2_会議開催','要件3_健康診断','要件4_研修実施'].forEach(function(r){var x=o[r];x.充足率=Math.round(x.充足/o.総人数*100)+'%';x.充足人数=x.充足+'/'+o.総人数+'名';x.判定=x.未実施.length?'⚠️未実施'+x.未実施.length+'名':'✅充足';});
+    o.総合判定=['要件1_情報伝達','要件2_会議開催','要件3_健康診断','要件4_研修実施'].every(function(r){return !o[r].未実施.length;})?'✅特定事業所加算 全要件充足':'⚠️一部要件に未充足あり';});
+  return out;
+}
+function demoData(){
+  var d=function(n){return ymd(addDays(TODAY,n));};
+  var sl=function(n){return d(n).replace(/-0?/g,'/');};
+  var y=TODAY.getFullYear();
+  var offices=[
+    {事業所名:'小山訪問介護',サービス種別:'訪問介護',事業所番号:'0970100011',開設日:'2012-04-01',指定更新日:d(75),指導権者:'栃木県',エリア:'県南エリア',管掌役員:'役員A',利用者数:72,特定事業所加算:'特定Ⅰ',処遇改善加算:'処遇Ⅰ',地域区分:'7級地'},
+    {事業所名:'小山訪問介護',サービス種別:'居宅介護（障害）',事業所番号:'0910100012',開設日:'2013-10-01',指定更新日:d(520),指導権者:'栃木県',エリア:'県南エリア',管掌役員:'役員A',利用者数:10,特定事業所加算:'なし',処遇改善加算:'処遇Ⅰ',地域区分:'7級地'},
+    {事業所名:'宇都宮訪問介護',サービス種別:'訪問介護',事業所番号:'0970200021',開設日:'2016-07-01',指定更新日:d(150),指導権者:'宇都宮市',エリア:'県央エリア',管掌役員:'役員A',利用者数:95,特定事業所加算:'特定Ⅱ',処遇改善加算:'処遇Ⅰ',地域区分:'6級地'},
+    {事業所名:'足利訪問介護',サービス種別:'訪問介護',事業所番号:'0970300031',開設日:'2019-04-01',指定更新日:d(900),指導権者:'栃木県',エリア:'県南エリア',管掌役員:'役員B',利用者数:41,特定事業所加算:'特定Ⅱ',処遇改善加算:'処遇Ⅱ',地域区分:'その他'},
+    {事業所名:'小山居宅介護支援',サービス種別:'居宅介護支援',事業所番号:'0970100041',開設日:'2012-04-01',指定更新日:d(400),指導権者:'小山市',エリア:'県南エリア',管掌役員:'役員B',利用者数:120,特定事業所加算:'なし',処遇改善加算:'なし',地域区分:'7級地'}];
+  var names=['佐藤 花子','鈴木 一郎','高橋 美咲','田中 健','伊藤 由美','渡辺 翔','山田 恵子','中島 修','小林 さくら','加藤 誠','吉田 涼子','松本 大輔','井上 麻衣','木村 拓也','林 千尋','清水 洋子','森 直樹','池田 彩'];
+  var helpers=[];var offs=['小山訪問介護','小山訪問介護','小山訪問介護','小山訪問介護','小山訪問介護','小山訪問介護','小山訪問介護','宇都宮訪問介護','宇都宮訪問介護','宇都宮訪問介護','宇都宮訪問介護','宇都宮訪問介護','宇都宮訪問介護','足利訪問介護','足利訪問介護','足利訪問介護','足利訪問介護','足利訪問介護'];
+  names.forEach(function(n,i){
+    var meet=i===3||i===9?-50:-(i%20);var health=i===2?null:i===10?-400:-(30+i*15);var t1=i===12?-500:-(60+i*10);
+    var h={介護員番号:'H'+('00'+(i+1)).slice(-3),氏名:n,カナ:'',事業所:offs[i],留意点会議日:sl(meet),研修1日:sl(t1),研修2日:i%3?sl(40):'未設定',健康診断日:health==null?'未取得':sl(health)};
+    h.留意点会議_判定=meet>=-30?'✅':'⚠️';h.研修_判定=(t1>=-365||i%3)?'✅':'⚠️';h.健康診断_判定=health==null?'❌':health>=-365?'✅':'⚠️期限切';
+    helpers.push(h);});
+  return {
+    sources:{kasan:'sample',offices:'sample',inspections:'sample',documents:'sample',incidents:'sample',staff:'sample',legal:'sample'},
+    generatedAt:ymd(TODAY),helpers:helpers,kasan:computeKasan(helpers),offices:offices,
+    inspections:[
+      {事業所名:'小山訪問介護',実施日:(y-5)+'-02-14',区分:'運営指導',指導権者:'栃木県',指摘区分:'計画',指摘内容:'訪問介護計画の同意日がサービス開始後になっている利用者がいた',改善報告期限:(y-5)+'-04-14',改善報告日:(y-5)+'-04-10',状態:'完了'},
+      {事業所名:'小山訪問介護',実施日:(y-5)+'-02-14',区分:'運営指導',指導権者:'栃木県',指摘区分:'研修・委員会',指摘内容:'虐待防止研修の実施記録がない',改善報告期限:(y-5)+'-04-14',改善報告日:(y-5)+'-04-10',状態:'完了'},
+      {事業所名:'宇都宮訪問介護',実施日:d(-40),区分:'運営指導',指導権者:'宇都宮市',指摘区分:'記録',指摘内容:'サービス提供記録の時間と請求の時間が一致しない日がある',改善報告期限:d(10),改善報告日:'',状態:'改善報告待ち'},
+      {事業所名:'宇都宮訪問介護',実施日:d(-40),区分:'運営指導',指導権者:'宇都宮市',指摘区分:'計画',指摘内容:'計画の見直しが長期間行われていない利用者がいる',改善報告期限:d(10),改善報告日:'',状態:'改善報告待ち'},
+      {事業所名:'足利訪問介護',実施日:(y-2)+'-11-06',区分:'運営指導',指導権者:'栃木県',指摘区分:'重説・契約',指摘内容:'運営規程と重要事項説明書の営業日が異なる',改善報告期限:(y-1)+'-01-06',改善報告日:(y-1)+'-01-05',状態:'完了'},
+      {事業所名:'足利訪問介護',実施日:(y-2)+'-11-06',区分:'運営指導',指導権者:'栃木県',指摘区分:'計画',指摘内容:'計画書の交付の記録がない',改善報告期限:(y-1)+'-01-06',改善報告日:(y-1)+'-01-05',状態:'完了'},
+      {事業所名:'小山居宅介護支援',実施日:(y-3)+'-06-20',区分:'運営指導',指導権者:'小山市',指摘区分:'記録',指摘内容:'モニタリングの訪問記録が欠けている月がある',改善報告期限:(y-3)+'-08-20',改善報告日:(y-3)+'-08-18',状態:'完了'}],
+    documents:[
+      {事業所名:'小山訪問介護',利用者ID:'U0012',利用者名:'利用者A',契約書:'○',重要事項説明書:'○',個別援助計画書:'',計画同意日:'',月額単位数:4200},
+      {事業所名:'小山訪問介護',利用者ID:'U0031',利用者名:'利用者B',契約書:'○',重要事項説明書:'',個別援助計画書:'○',計画同意日:d(-20),月額単位数:2600},
+      {事業所名:'宇都宮訪問介護',利用者ID:'U0105',利用者名:'利用者C',契約書:'',重要事項説明書:'',個別援助計画書:'',計画同意日:'',月額単位数:6100},
+      {事業所名:'宇都宮訪問介護',利用者ID:'U0110',利用者名:'利用者D',契約書:'○',重要事項説明書:'○',個別援助計画書:'○',計画同意日:d(-90),月額単位数:3300},
+      {事業所名:'足利訪問介護',利用者ID:'U0201',利用者名:'利用者E',契約書:'○',重要事項説明書:'○',個別援助計画書:'○',計画同意日:d(-60),月額単位数:2900}],
+    incidents:[
+      {発生日:d(-12),事業所名:'小山訪問介護',区分:'転倒',重要度:'中',概要:'移乗介助中にふらつき、尻もち。外傷なし',対応状況:'対応済'},
+      {発生日:d(-30),事業所名:'小山訪問介護',区分:'服薬',重要度:'高',概要:'服薬介助で朝分と昼分を取り違え',対応状況:'再発防止策検討中'},
+      {発生日:d(-45),事業所名:'小山訪問介護',区分:'転倒',重要度:'低',概要:'歩行時につまずき。転倒なし',対応状況:'対応済'},
+      {発生日:d(-8),事業所名:'宇都宮訪問介護',区分:'物損',重要度:'低',概要:'掃除中に食器を破損',対応状況:'対応済'},
+      {発生日:d(-20),事業所名:'宇都宮訪問介護',区分:'金銭',重要度:'高',概要:'買い物代行のおつりの記録漏れ',対応状況:'家族へ説明済・確認中'},
+      {発生日:d(-70),事業所名:'宇都宮訪問介護',区分:'転倒',重要度:'中',概要:'入浴介助後に脱衣所で転倒',対応状況:'対応済'},
+      {発生日:d(-5),事業所名:'足利訪問介護',区分:'遅刻・訪問漏れ',重要度:'中',概要:'シフト変更の連絡漏れで訪問が30分遅れた',対応状況:'対応済'}],
+    staff:[
+      {登録日:d(-200),事業所名:'小山訪問介護',氏名:'佐藤 花子',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'新規採用',届出要否:'要（変更届）',届出期限:d(-190),届出状況:'提出済'},
+      {登録日:d(-180),事業所名:'小山訪問介護',氏名:'鈴木 一郎',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'新規採用',届出要否:'要（変更届）',届出期限:d(-170),届出状況:'提出済'},
+      {登録日:d(-170),事業所名:'小山訪問介護',氏名:'高橋 美咲',職種:'訪問介護員',資格:'実務者研修',常勤区分:'常勤',サ責:'-',週勤務時間:40,異動区分:'新規採用',届出要否:'不要',届出期限:'',届出状況:'-'},
+      {登録日:d(-160),事業所名:'小山訪問介護',氏名:'田中 健',職種:'訪問介護員',資格:'初任者研修',常勤区分:'非常勤',サ責:'-',週勤務時間:20,異動区分:'新規採用',届出要否:'不要',届出期限:'',届出状況:'-'},
+      {登録日:d(-4),事業所名:'小山訪問介護',氏名:'山田 恵子',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'産休・育休',届出要否:'要（変更届）',届出期限:d(6),届出状況:'未提出'},
+      {登録日:d(-100),事業所名:'宇都宮訪問介護',氏名:'吉田 涼子',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'新規採用',届出要否:'要（変更届）',届出期限:d(-90),届出状況:'提出済'},
+      {登録日:d(-90),事業所名:'宇都宮訪問介護',氏名:'松本 大輔',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'新規採用',届出要否:'要（変更届）',届出期限:d(-80),届出状況:'提出済'},
+      {登録日:d(-80),事業所名:'宇都宮訪問介護',氏名:'井上 麻衣',職種:'訪問介護員',資格:'初任者研修',常勤区分:'非常勤',サ責:'-',週勤務時間:24,異動区分:'新規採用',届出要否:'不要',届出期限:'',届出状況:'-'},
+      {登録日:d(-60),事業所名:'足利訪問介護',氏名:'森 直樹',職種:'サービス提供責任者',資格:'介護福祉士',常勤区分:'常勤',サ責:'○',週勤務時間:40,異動区分:'新規採用',届出要否:'要（変更届）',届出期限:d(-50),届出状況:'提出済'},
+      {登録日:d(-55),事業所名:'足利訪問介護',氏名:'池田 彩',職種:'訪問介護員',資格:'介護福祉士',常勤区分:'常勤',サ責:'-',週勤務時間:40,異動区分:'新規採用',届出要否:'不要',届出期限:'',届出状況:'-'},
+      {登録日:d(-50),事業所名:'足利訪問介護',氏名:'林 千尋',職種:'訪問介護員',資格:'初任者研修',常勤区分:'非常勤',サ責:'-',週勤務時間:16,異動区分:'新規採用',届出要否:'不要',届出期限:'',届出状況:'-'}],
+    legal:[{受付日時:d(-3)+' 14:20',事業所名:'宇都宮訪問介護',相談者:'管理者',カテゴリ:'利用者・家族とのトラブル',相談内容:'家族から契約外のサービスを強く求められている。断り方の注意点を知りたい',緊急度:'通常',状態:'受付'}],
+    checklists:{}
+  };
+}
+
+reload();
+</script></body></html>
